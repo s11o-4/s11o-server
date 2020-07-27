@@ -25,3 +25,17 @@ module.exports = {
     await queryInterface.dropTable('Tasks');
   }
 };
+
+
+
+
+/*
+RETO FINAL
+
+
+Categories
+  title string
+  color
+Category
+
+*/

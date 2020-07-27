@@ -1,0 +1,10 @@
+//output:edit.html
+doctype html
+html
+  head
+    title Tareas
+  body
+    form(action=`/tasks/${task.id}?_method=PUT` method="POST")
+      textarea(name = "description" placeholder="coloca aqui el texto")= task.description
+      input(type="submit" value="guardar")
+
