@@ -46,9 +46,7 @@ app.get('/', function(req, res){
  res.render('home', {user: req.user});
 })
 
-let server = app.listen(3000,(req ,res) => {
-    console.log('Estoy listo para funcionar')
-});
+let server = app.listen(process.env.PORT || 3000);
 let io = socketio(server);
 let sockets = {};
 
