@@ -25,7 +25,9 @@ module.exports = (sequelize, DataTypes) => {
 
    Task.associate = function(models){
      Task.belongsTo(models.User, {
-       as: 'user'
+       as: 'user',
+       foreignKey:'userId'
+
      }); //Esto establece la relacion de uno a mucho con el modelo user.js V2
     }
   

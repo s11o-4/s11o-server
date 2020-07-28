@@ -62,7 +62,8 @@ module.exports = (sequelize, DataTypes) => {
    
   User.associate = function(models){
     User.hasMany(models.Task, {  // un usuario puede tener miuchas tareas V2
-      as: 'tasks' 
+      as: 'tasks',
+      foreignKey:'userId'
    });
   };
 
