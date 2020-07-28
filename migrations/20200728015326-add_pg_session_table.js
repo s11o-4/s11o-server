@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
    return queryInterface.createTable('session', {
-     $id: {
+     sid: {
        type: Sequelize.STRING,
        primaryKey: true
      },
