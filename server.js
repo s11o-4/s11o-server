@@ -29,11 +29,19 @@ app.set('view engine', 'pug');
 //Esto responde con las funcion home que importe de tasks
 //app.get('/tasks', tasks.home);
 
-app.use(session({
-   secret:['yosoyunaclavewife9ef4nj853jebgegy8n45u94__cporemfpre','yyoorasnfioreuifref65489-*59+4-/+38'],
-   saveUnitialized: false,
-   resave: false
-}));
+let sessionConfig = {
+    secret:['yosoyunaclavewife9ef4nj853jebgegy8n45u94__cporemfpre','yyoorasnfioreuifref65489-*59+4-/+38'],
+    saveUnitialized: false,
+    resave: false
+ }
+
+if(process.env.NODE_ENV && process.env.NODE_ENV == 'production'){//En process.env se especifica el entorno en el que se esta ejecutando nuestra aplicacion. Si esta variable existe y su valor es igual a production, quiero que haga tal cosa
+  sessionConfig['store'] = new (require('connect-pg-simple')(session))(); // Cambia el almacen por conect-pg-simple y para hacerlo necesito ejecutar el paquete y pasarlo arguemnto a session  
+}
+
+app.use(session(sessionConfig));
+
+
  //                 MONTO MIS MIDDLEWARES
 app.use(findUserMiddleware);
 app.use(authUser);
